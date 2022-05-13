@@ -2,7 +2,11 @@
 def input_validate(int):
     if int < 9 and int > -1:
         # Input validation "Success"
-        return 1
+        if xState[int] == 0 and zState[int] == 0 :
+            return 1
+        else:
+            print(f"You've entered {int}!\nDon't try to Change privious inputs! ")
+            return 0
     else:
         return 0
 
@@ -96,6 +100,8 @@ if __name__ == "__main__":
 
     turn = 0    # Turn 0 is X's turn & 1 is O's turn
 
+    chance_left = 9 #This is how many chance left for X & Y to continue play
+
     print(f"\nHello {user_name.capitalize()}! Enjoy this game... \n ")
     
     print(f" 0 | 1 | 2 ")
@@ -104,7 +110,7 @@ if __name__ == "__main__":
     print(f"---|---|---")
     print(f" 6 | 7 | 8 ")
 
-    while (True):
+    while (chance_left>0):
         if turn == 0:
             x_input = int(input("Enter X's Input: "))
             intt = input_validate(x_input)
@@ -112,6 +118,7 @@ if __name__ == "__main__":
                 change_state("X", x_input)
                 structure(xState, zState)
                 turn = 1
+                chance_left -= 1
             else:
                 print("Enter valid input!!")
         else :
@@ -121,6 +128,7 @@ if __name__ == "__main__":
                 change_state("Z", z_input)
                 structure(xState, zState)
                 turn = 0
+                chance_left -= 1
             else:
                 print("Enter valid input!!")
             
@@ -138,5 +146,8 @@ if __name__ == "__main__":
             exit(1)
     
 
-print("Thanks for playing. Hope you've enjoyed the game!\n")
+if chance_left == 0:
+    print("Match draw!!")
+
+print(f"Thanks for playing {user_name.capitalize()}. Hope you've enjoyed the game!\n")
 exit()
