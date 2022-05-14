@@ -1,3 +1,7 @@
+from sys import argv
+
+
+
 
 def input_validate(int):
     if int < 9 and int > -1:
@@ -96,13 +100,19 @@ if __name__ == "__main__":
     xState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     zState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    user_name = input("\nEnter your name: ")
+    try :
+        print(f"Welcome {argv[1]}")
+        user_name = argv[1]
+    except :
+        user_name = input("\nEnter your name: ")
+    
+    user_name = user_name.capitalize()
 
     turn = 0    # Turn 0 is X's turn & 1 is O's turn
 
     chance_left = 9 #This is how many chance left for X & Y to continue play
 
-    print(f"\nHello {user_name.capitalize()}! Enjoy this game... \n ")
+    print(f"\nHello {user_name}! Enjoy this game... \n ")
     
     print(f" 0 | 1 | 2 ")
     print(f"---|---|---")
@@ -149,5 +159,9 @@ if __name__ == "__main__":
 if chance_left == 0:
     print("Match draw!!")
 
-print(f"Thanks for playing {user_name.capitalize()}. Hope you've enjoyed the game!\n")
+print(f"Thanks for playing {user_name} Hope you've enjoyed the game!\n")
 exit()
+
+# https://youtu.be/0LHmevWVvpc
+
+# https://www.youtube.com/watch?v=ci9kHFl0OEs
