@@ -1,5 +1,5 @@
 ## Usage
-python main.py <your name>
+python main.py name <your name>
   or
 python main.py
   
