@@ -1,6 +1,7 @@
 from sys import argv
 import random
 import os
+import platform
 
 
 def input_validate(int):
@@ -46,9 +47,9 @@ def change_state(who, int):
 
 
 def clear_screen():
-    try :
+    if platform.system() == "Windows" :
         os.system("cls")
-    except:
+    else:
         os.system("clear")
 
 
